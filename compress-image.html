@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compress an image — Ledger Supply Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: #F1EEE6;
+    color: #22384A;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin: 0 0 0.4rem;
+  }
+  p.sub { color: #5E6E72; margin: 0 0 2rem; }
+  .drop-zone {
+    border: 2px dashed #B9791F;
+    background: #FBFAF6;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+  }
+  .drop-zone.dragover { background: #F6E8CC; }
+  .drop-zone p { margin: 0; color: #5E6E72; }
+  input[type="file"] { display: none; }
+  .controls {
+    margin-top: 1.5rem;
+    display: none;
+  }
+  .controls.visible { display: block; }
+  label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: #5E6E72;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  input[type="range"] { width: 100%; }
+  .row { display: flex; gap: 1.5rem; margin-bottom: 1.2rem; }
+  .row > div { flex: 1; }
+  .preview-row {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .preview-col { flex: 1; text-align: center; }
+  .preview-col img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    background: #FBFAF6;
+    border: 1px solid #D3CFC2;
+  }
+  .preview-col .size-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: #5E6E72;
+    margin-top: 0.4rem;
+  }
+  .savings {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: #3D7A5D;
+  }
+  button, .download-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    background: #22384A;
+    color: #F1EEE6;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  button:hover, .download-btn:hover { background: #1A2C3A; }
+  .filename-row { margin-top: 1rem; }
+  .filename-row input[type="text"] {
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #D3CFC2;
+    width: 100%;
+    background: #FBFAF6;
+    color: #22384A;
+  }
+</style>
+</head>
+<body>
+
+<h1>Compress an image</h1>
+<p class="sub">Drop a photo in, get a small file out. Nothing leaves your browser — this doesn't upload anywhere.</p>
+
+<div class="drop-zone" id="drop-zone">
+  <p>Drop a photo here, or click to choose one</p>
+  <input type="file" id="file-input" accept="image/*">
+</div>
+
+<div class="controls" id="controls">
+  <div class="row">
+    <div>
+      <label for="max-width">Max width (px)</label>
+      <input type="range" id="max-width" min="400" max="1600" step="100" value="900">
+      <span id="max-width-val" style="font-family:'IBM Plex Mono',monospace; font-size:0.82rem;">900px</span>
+    </div>
+    <div>
+      <label for="quality">JPEG quality</label>
+      <input type="range" id="quality" min="0.3" max="0.95" step="0.05" value="0.72">
+      <span id="quality-val" style="font-family:'IBM Plex Mono',monospace; font-size:0.82rem;">0.72</span>
+    </div>
+  </div>
+
+  <div class="preview-row">
+    <div class="preview-col">
+      <img id="original-preview" alt="Original">
+      <div class="size-label" id="original-size"></div>
+    </div>
+    <div class="preview-col">
+      <img id="compressed-preview" alt="Compressed">
+      <div class="size-label" id="compressed-size"></div>
+    </div>
+  </div>
+
+  <p class="savings" id="savings-label"></p>
+
+  <div class="filename-row">
+    <label for="filename">Save as (goes in your /images folder)</label>
+    <input type="text" id="filename" value="item.jpg">
+  </div>
+
+  <div style="margin-top:1rem;">
+    <a class="download-btn" id="download-btn" download="item.jpg">Download compressed image</a>
+  </div>
+</div>
+
+<script>
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const controls = document.getElementById('controls');
+const maxWidthSlider = document.getElementById('max-width');
+const qualitySlider = document.getElementById('quality');
+const maxWidthVal = document.getElementById('max-width-val');
+const qualityVal = document.getElementById('quality-val');
+const originalPreview = document.getElementById('original-preview');
+const compressedPreview = document.getElementById('compressed-preview');
+const originalSize = document.getElementById('original-size');
+const compressedSize = document.getElementById('compressed-size');
+const savingsLabel = document.getElementById('savings-label');
+const filenameInput = document.getElementById('filename');
+const downloadBtn = document.getElementById('download-btn');
+
+let currentImage = null;
+let originalBytes = 0;
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files.length) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) return;
+  originalBytes = file.size;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      currentImage = img;
+      originalPreview.src = e.target.result;
+      originalSize.textContent = 'Original — ' + formatBytes(originalBytes);
+      controls.classList.add('visible');
+      const baseName = file.name.replace(/\.[^/.]+$/, '').toLowerCase().replace(/[^a-z0-9-]/g, '-');
+      filenameInput.value = baseName + '.jpg';
+      compress();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function compress() {
+  if (!currentImage) return;
+  const maxWidth = parseInt(maxWidthSlider.value, 10);
+  const quality = parseFloat(qualitySlider.value);
+
+  let { width, height } = currentImage;
+  if (width > maxWidth) {
+    height = Math.round(height * (maxWidth / width));
+    width = maxWidth;
+  }
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(currentImage, 0, 0, width, height);
+
+  canvas.toBlob((blob) => {
+    const url = URL.createObjectURL(blob);
+    compressedPreview.src = url;
+    compressedSize.textContent = 'Compressed — ' + formatBytes(blob.size);
+    const pct = originalBytes > 0 ? Math.round((1 - blob.size / originalBytes) * 100) : 0;
+    savingsLabel.textContent = pct > 0 ? pct + '% smaller' : '';
+    downloadBtn.href = url;
+    downloadBtn.download = filenameInput.value || 'item.jpg';
+  }, 'image/jpeg', quality);
+}
+
+maxWidthSlider.addEventListener('input', () => {
+  maxWidthVal.textContent = maxWidthSlider.value + 'px';
+  compress();
+});
+qualitySlider.addEventListener('input', () => {
+  qualityVal.textContent = qualitySlider.value;
+  compress();
+});
+filenameInput.addEventListener('input', () => {
+  downloadBtn.download = filenameInput.value || 'item.jpg';
+});
+</script>
+
+</body>
+</html>

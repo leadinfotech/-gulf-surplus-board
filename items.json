@@ -1,0 +1,580 @@
+[
+  {
+    "sku": "BW-01",
+    "name": "Polystyrene Board",
+    "category": "Boards & Wood",
+    "price": 2.25,
+    "unit": "sheet",
+    "description": "Rigid polystyrene board, available in multiple thicknesses (2-12mm) and colors. Used for signage, partitions, insulation, and display work."
+  },
+  {
+    "sku": "BW-02",
+    "name": "Redmeranti Wood Solid - 2x8 ft",
+    "category": "Boards & Wood",
+    "price": 1.5,
+    "unit": "piece",
+    "description": "Solid redmeranti hardwood, size 2x8 ft. Suitable for construction, furniture, and interior work."
+  },
+  {
+    "sku": "BW-03",
+    "name": "Redmeranti Wood Solid - 2x10 ft",
+    "category": "Boards & Wood",
+    "price": null,
+    "unit": "piece",
+    "description": "Solid redmeranti hardwood, size 2x10 ft. Suitable for construction, furniture, and interior work."
+  },
+  {
+    "sku": "BW-04",
+    "name": "Plain MDF 18mm",
+    "category": "Boards & Wood",
+    "price": 9.5,
+    "unit": "sheet",
+    "description": "Plain MDF board, 4x8 ft x 18mm, smooth surface, high density. Ideal for furniture and interior use.",
+    "country": "China"
+  },
+  {
+    "sku": "BW-05",
+    "name": "MDF Melamine - Red Oak",
+    "category": "Boards & Wood",
+    "price": 11.5,
+    "unit": "sheet",
+    "description": "Melamine-faced MDF board, 4x8 ft x 18mm, red oak finish. Smooth, easy-clean surface for furniture and cabinetry."
+  },
+  {
+    "sku": "BW-06",
+    "name": "MDF Melamine - Beech",
+    "category": "Boards & Wood",
+    "price": 11.5,
+    "unit": "sheet",
+    "description": "Melamine-faced MDF board, 4x8 ft x 18mm, beech finish. Smooth, easy-clean surface for furniture and cabinetry."
+  },
+  {
+    "sku": "BW-07",
+    "name": "MDF Melamine - Teak",
+    "category": "Boards & Wood",
+    "price": 11.5,
+    "unit": "sheet",
+    "description": "Melamine-faced MDF board, 4x8 ft x 18mm, teak finish. Smooth, easy-clean surface for furniture and cabinetry."
+  },
+  {
+    "sku": "BW-08",
+    "name": "MDF Melamine - Maple",
+    "category": "Boards & Wood",
+    "price": 11.5,
+    "unit": "sheet",
+    "description": "Melamine-faced MDF board, 4x8 ft x 18mm, maple finish. Smooth, easy-clean surface for furniture and cabinetry."
+  },
+  {
+    "sku": "BW-09",
+    "name": "Ordinary Plywood (WBP)",
+    "category": "Boards & Wood",
+    "price": 12.0,
+    "unit": "sheet",
+    "description": "WBP-grade plywood, 4x8 ft x 18mm. Strong core, smooth surface, suitable for general construction and furniture.",
+    "country": "Malaysia"
+  },
+  {
+    "sku": "BW-10",
+    "name": "Block Board",
+    "category": "Boards & Wood",
+    "price": 10.5,
+    "unit": "sheet",
+    "description": "Block board, 4x8 ft x 18mm. Strong, stable core, ideal for furniture and interior use."
+  },
+  {
+    "sku": "BW-11",
+    "name": "PVC Lipping Edge Band",
+    "category": "Boards & Wood",
+    "price": 6.0,
+    "unit": "roll",
+    "description": "PVC edge banding, 3cm width x 100m roll, wood-grain finish. Used to finish exposed edges of boards and panels."
+  },
+  {
+    "sku": "BW-12",
+    "name": "Film-Faced Plywood (TCOPLY)",
+    "category": "Boards & Wood",
+    "price": 8.2,
+    "unit": "sheet",
+    "description": "Film-faced plywood, commonly used for concrete shuttering and formwork. Full spec to be confirmed."
+  },
+  {
+    "sku": "FW-01",
+    "name": "Steel Concrete Nails 2\" Spiral",
+    "category": "Fasteners & Wire",
+    "price": 14.0,
+    "unit": "box",
+    "description": "Spiral steel concrete nails, 2 inch, sold by the box.",
+    "country": "Taiwan"
+  },
+  {
+    "sku": "FW-02",
+    "name": "Wire Nail",
+    "category": "Fasteners & Wire",
+    "price": 2.5,
+    "unit": "kg",
+    "description": "General-purpose wire nails, sold by the kilogram."
+  },
+  {
+    "sku": "FW-03",
+    "name": "Steel Nail",
+    "category": "Fasteners & Wire",
+    "price": 14.0,
+    "unit": "kg",
+    "description": "Steel nails for heavy-duty construction use, sold by the kilogram."
+  },
+  {
+    "sku": "FW-04",
+    "name": "Finishing Nail",
+    "category": "Fasteners & Wire",
+    "price": 4.5,
+    "unit": "kg",
+    "description": "Finishing nails for fine trim and furniture work, sold by the kilogram."
+  },
+  {
+    "sku": "FW-05",
+    "name": "Brad Nail",
+    "category": "Fasteners & Wire",
+    "price": 2.5,
+    "unit": "box",
+    "description": "Brad nails, sold by the box. Suited for delicate trim and cabinetry work."
+  },
+  {
+    "sku": "FW-06",
+    "name": "Binding Wire - GI Galvanized",
+    "category": "Fasteners & Wire",
+    "price": 2.5,
+    "unit": "roll",
+    "description": "Galvanized binding wire, corrosion-resistant. Available in multiple gauges."
+  },
+  {
+    "sku": "FW-07",
+    "name": "Binding Wire - Black Annealed",
+    "category": "Fasteners & Wire",
+    "price": 4.5,
+    "unit": "roll",
+    "description": "Black annealed binding wire, soft and flexible for general binding."
+  },
+  {
+    "sku": "FW-08",
+    "name": "Binding Wire - PVC Coated",
+    "category": "Fasteners & Wire",
+    "price": 4.5,
+    "unit": "roll",
+    "description": "PVC-coated binding wire, extra rust protection."
+  },
+  {
+    "sku": "FW-09",
+    "name": "Wooden Dowels",
+    "category": "Fasteners & Wire",
+    "price": 3.35,
+    "unit": "pack",
+    "description": "Wooden dowels for furniture assembly and joinery, sold per pack."
+  },
+  {
+    "sku": "CM-01",
+    "name": "GI Lintel - 4\"",
+    "category": "Construction Materials",
+    "price": null,
+    "unit": "piece",
+    "description": "Pre-galvanized steel lintel, 4 inch, standard 3m length. Provides support above door and window openings."
+  },
+  {
+    "sku": "CM-02",
+    "name": "GI Lintel - 6\"",
+    "category": "Construction Materials",
+    "price": null,
+    "unit": "piece",
+    "description": "Pre-galvanized steel lintel, 6 inch, standard 3m length. Provides support above door and window openings."
+  },
+  {
+    "sku": "CM-03",
+    "name": "GI Lintel - 8\"",
+    "category": "Construction Materials",
+    "price": 2.95,
+    "unit": "piece",
+    "description": "Pre-galvanized steel lintel, 8 inch, standard 3m length. Provides support above door and window openings."
+  },
+  {
+    "sku": "CM-04",
+    "name": "Fiber Glass Mesh - 6\" x 50m",
+    "category": "Construction Materials",
+    "price": 1.95,
+    "unit": "roll",
+    "description": "Alkali-resistant fiberglass mesh, 6 inch x 50m roll. Used to reinforce plaster and renders.",
+    "country": "India"
+  },
+  {
+    "sku": "CM-05",
+    "name": "Fiber Glass Mesh - 8\" x 50m",
+    "category": "Construction Materials",
+    "price": 2.95,
+    "unit": "roll",
+    "description": "Alkali-resistant fiberglass mesh, 8 inch x 50m roll. Used to reinforce plaster and renders.",
+    "country": "India"
+  },
+  {
+    "sku": "HT-01",
+    "name": "Shovel",
+    "category": "Hand Tools",
+    "price": 1.4,
+    "unit": "unit",
+    "description": "Steel-head shovel with wooden D-grip handle. Suitable for digging and general site work."
+  },
+  {
+    "sku": "HT-02",
+    "name": "Garden Rake",
+    "category": "Hand Tools",
+    "price": 1.6,
+    "unit": "unit",
+    "description": "Steel-tine garden rake with wooden handle. For leveling soil and clearing debris."
+  },
+  {
+    "sku": "HT-03",
+    "name": "Line Dori",
+    "category": "Hand Tools",
+    "price": 0.35,
+    "unit": "roll",
+    "description": "Nylon line used for alignment, leveling, and marking straight lines on site."
+  },
+  {
+    "sku": "HT-04",
+    "name": "Paint Roller with Sleeve",
+    "category": "Hand Tools",
+    "price": 0.9,
+    "unit": "unit",
+    "description": "Paint roller with replaceable sleeve, for smooth application on walls and ceilings."
+  },
+  {
+    "sku": "HT-05",
+    "name": "Trowel (Karandi)",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "unit",
+    "description": "Steel trowel with wooden handle, used for handling and applying cement and mortar."
+  },
+  {
+    "sku": "HT-06",
+    "name": "Claw Hammer",
+    "category": "Hand Tools",
+    "price": 1.5,
+    "unit": "unit",
+    "description": "Forged steel claw hammer with ergonomic grip handle."
+  },
+  {
+    "sku": "HT-07",
+    "name": "Engineer Hammer",
+    "category": "Hand Tools",
+    "price": 1.5,
+    "unit": "unit",
+    "description": "Hardened steel engineer's hammer with wooden handle, for metalwork and chiseling."
+  },
+  {
+    "sku": "HT-08",
+    "name": "Pick Hammer",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "unit",
+    "description": "Forged steel pick hammer, for breaking concrete and masonry work."
+  },
+  {
+    "sku": "HT-09",
+    "name": "Screwdriver Set",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "set",
+    "description": "Multi-piece screwdriver set with chrome vanadium steel blades and non-slip handles."
+  },
+  {
+    "sku": "HT-10",
+    "name": "Plaster Brush",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "unit",
+    "description": "Plaster/whitewash brush with wooden block and thick bristles."
+  },
+  {
+    "sku": "HT-11",
+    "name": "Plastic Float",
+    "category": "Hand Tools",
+    "price": 0.55,
+    "unit": "unit",
+    "description": "Durable plastic float for plastering and surface finishing."
+  },
+  {
+    "sku": "HT-12",
+    "name": "Box Socket Set (15pcs, 1/2\", 10-24mm)",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "set",
+    "description": "15-piece 1/2 inch drive socket set, 10-24mm range, with ratchet handle and case."
+  },
+  {
+    "sku": "HT-13",
+    "name": "Industrial Roller Brush",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "unit",
+    "description": "Industrial roller brush - exact application to be confirmed."
+  },
+  {
+    "sku": "HT-14",
+    "name": "Metal Cutting Disc - Gazelle 4.5\"",
+    "category": "Hand Tools",
+    "price": 0.25,
+    "unit": "unit",
+    "description": "Gazelle-brand metal cutting disc, 4.5 inch, for angle grinders.",
+    "country": "Turkey"
+  },
+  {
+    "sku": "HT-15",
+    "name": "Metal Cutting Disc - Gazelle 9\"",
+    "category": "Hand Tools",
+    "price": 0.6,
+    "unit": "unit",
+    "description": "Gazelle-brand metal cutting disc, 9 inch, for angle grinders.",
+    "country": "Turkey"
+  },
+  {
+    "sku": "HT-16",
+    "name": "Metal Cutting Disc - Stark 4.5\"",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "unit",
+    "description": "Stark-brand metal cutting disc, 4.5 inch, for angle grinders.",
+    "country": "Turkey"
+  },
+  {
+    "sku": "HT-17",
+    "name": "Metal Cutting Disc - Stark 9\"",
+    "category": "Hand Tools",
+    "price": null,
+    "unit": "unit",
+    "description": "Stark-brand metal cutting disc, 9 inch, for angle grinders.",
+    "country": "Turkey"
+  },
+  {
+    "sku": "MC-01",
+    "name": "Plastering Tyrolean Machine",
+    "category": "Machinery",
+    "price": 4.5,
+    "unit": "unit",
+    "description": "Manual crank Tyrolean plastering machine for fast, even plaster application on walls and ceilings."
+  },
+  {
+    "sku": "TP-01",
+    "name": "Stretch Film",
+    "category": "Tape & Packaging",
+    "price": 1.9,
+    "unit": "roll",
+    "description": "Stretch wrap film, 23 micron, 2.5kg roll. Used to secure and protect palletized loads.",
+    "country": "Oman"
+  },
+  {
+    "sku": "TP-02",
+    "name": "Duct Tape",
+    "category": "Tape & Packaging",
+    "price": 0.9,
+    "unit": "roll",
+    "description": "Duct tape, 48mm x 45m, strong adhesive for sealing, bundling, and general repairs."
+  },
+  {
+    "sku": "TP-03",
+    "name": "Masking Tape - 1\"",
+    "category": "Tape & Packaging",
+    "price": 2.6,
+    "unit": "roll",
+    "description": "Masking tape, 1 inch width x 30m."
+  },
+  {
+    "sku": "TP-04",
+    "name": "Masking Tape - 2\"",
+    "category": "Tape & Packaging",
+    "price": 4.0,
+    "unit": "roll",
+    "description": "Masking tape, 2 inch width x 30m."
+  },
+  {
+    "sku": "TP-05",
+    "name": "Masking Tape - 3\"",
+    "category": "Tape & Packaging",
+    "price": null,
+    "unit": "roll",
+    "description": "Masking tape, 3 inch width x 30m."
+  },
+  {
+    "sku": "TP-06",
+    "name": "Warning Tape",
+    "category": "Tape & Packaging",
+    "price": null,
+    "unit": "roll",
+    "description": "Red/white hazard warning tape, 70mm x 200m. For marking hazard areas and crowd control."
+  },
+  {
+    "sku": "CH-01",
+    "name": "Lacquer Thinner",
+    "category": "Chemicals",
+    "price": 26.0,
+    "unit": "drum",
+    "description": "Premium lacquer thinner, fast-evaporating solvent for thinning lacquer paints and cleaning equipment."
+  },
+  {
+    "sku": "SF-01",
+    "name": "Safety Goggles - Black",
+    "category": "Safety / PPE",
+    "price": 0.35,
+    "unit": "unit",
+    "description": "Safety goggles, tinted/black lens. UV and impact protection."
+  },
+  {
+    "sku": "SF-02",
+    "name": "Safety Goggles - Clear",
+    "category": "Safety / PPE",
+    "price": 0.35,
+    "unit": "unit",
+    "description": "Safety goggles, clear lens. UV and impact protection."
+  },
+  {
+    "sku": "SF-03",
+    "name": "Traffic Cone - 1 Meter",
+    "category": "Safety / PPE",
+    "price": 1.9,
+    "unit": "unit",
+    "description": "1 meter traffic cone with reflective band and stable hexagonal base."
+  },
+  {
+    "sku": "SF-04",
+    "name": "Cotton Gloves",
+    "category": "Safety / PPE",
+    "price": null,
+    "unit": "pair",
+    "description": "General-purpose cotton work gloves."
+  },
+  {
+    "sku": "SF-05",
+    "name": "Latex Coated Gloves",
+    "category": "Safety / PPE",
+    "price": null,
+    "unit": "pair",
+    "description": "Latex-coated palm gloves for improved grip in wet and dry conditions."
+  },
+  {
+    "sku": "SF-06",
+    "name": "PVC Dotted Gloves",
+    "category": "Safety / PPE",
+    "price": null,
+    "unit": "pair",
+    "description": "PVC-dotted grip gloves for heavy-duty handling."
+  },
+  {
+    "sku": "SF-07",
+    "name": "Leather Welding Gloves",
+    "category": "Safety / PPE",
+    "price": null,
+    "unit": "pair",
+    "description": "Heat-resistant leather welding gloves."
+  },
+  {
+    "sku": "SF-08",
+    "name": "Red Cotton Gloves",
+    "category": "Safety / PPE",
+    "price": null,
+    "unit": "pair",
+    "description": "Red cotton gloves, multipurpose use."
+  },
+  {
+    "sku": "CU-01",
+    "name": "Coco Broom",
+    "category": "Cleaning / Utility",
+    "price": 1.6,
+    "unit": "unit",
+    "description": "Natural coco-bristle broom for floor cleaning."
+  },
+  {
+    "sku": "CU-02",
+    "name": "Wall Brush",
+    "category": "Cleaning / Utility",
+    "price": null,
+    "unit": "unit",
+    "description": "Soft-bristle wall brush for wall and surface cleaning."
+  },
+  {
+    "sku": "CU-03",
+    "name": "Spin Mop Set",
+    "category": "Cleaning / Utility",
+    "price": 4.85,
+    "unit": "set",
+    "description": "360-degree spin mop set with wringer bucket."
+  },
+  {
+    "sku": "CU-04",
+    "name": "Glass Cleaner",
+    "category": "Cleaning / Utility",
+    "price": null,
+    "unit": "bottle",
+    "description": "Streak-free glass and surface cleaner spray."
+  },
+  {
+    "sku": "CU-05",
+    "name": "Dustbin",
+    "category": "Cleaning / Utility",
+    "price": null,
+    "unit": "unit",
+    "description": "Wheeled dustbin for indoor or outdoor use."
+  },
+  {
+    "sku": "CU-06",
+    "name": "Jerry Can",
+    "category": "Cleaning / Utility",
+    "price": 7.2,
+    "unit": "unit",
+    "description": "Heavy-duty plastic jerry can, leak-proof, for water or chemicals."
+  },
+  {
+    "sku": "CU-07",
+    "name": "PVC Bucket",
+    "category": "Cleaning / Utility",
+    "price": 0.55,
+    "unit": "unit",
+    "description": "PVC bucket with metal handle, available in multiple capacities."
+  },
+  {
+    "sku": "FC-01",
+    "name": "Hessian Cloth",
+    "category": "Fiber / Cloth",
+    "price": 74.0,
+    "unit": "bale",
+    "description": "Hessian (jute) cloth, sold by the bale. Durable, for industrial packing use."
+  },
+  {
+    "sku": "FC-02",
+    "name": "Cotton Rag",
+    "category": "Fiber / Cloth",
+    "price": 4.5,
+    "unit": "kg",
+    "description": "Soft absorbent cotton rag, sold by the kilogram, for cleaning and wiping."
+  },
+  {
+    "sku": "FC-03",
+    "name": "Cotton Waste",
+    "category": "Fiber / Cloth",
+    "price": null,
+    "unit": "kg",
+    "description": "100% cotton waste, high absorbency, sold by the kilogram."
+  },
+  {
+    "sku": "FC-04",
+    "name": "Malmal Cloth",
+    "category": "Fiber / Cloth",
+    "price": null,
+    "unit": "kg",
+    "description": "Lightweight malmal cloth, ideal for polishing and delicate cleaning."
+  },
+  {
+    "sku": "SE-01",
+    "name": "Water Cooler (12L / 3 Gal)",
+    "category": "Site Equipment",
+    "price": 8.5,
+    "unit": "unit",
+    "description": "12L (3 gallon) insulated water cooler with easy-flow tap."
+  }
+]
