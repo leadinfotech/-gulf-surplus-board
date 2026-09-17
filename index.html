@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulf Surplus Board — Stock Listings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="manifest-header">
+  <div class="header-inner">
+    <div class="brand-block">
+      <p class="brand-eyebrow">// stock listings &amp; sourcing</p>
+      <h1 class="brand-name">Gulf Surplus Board</h1>
+      <div class="brand-underline"></div>
+      <p class="tagline">Hard-to-find items advertised here on behalf of stockholders across the Gulf. Bulk and small orders both welcome. Contact the number listed to arrange purchase directly with the stockholder.</p>
+    </div>
+    <div class="stat-strip" id="stat-strip" aria-label="Catalog summary">
+      <div class="stat"><span class="stat-value" id="stat-items">—</span><span class="stat-label">items listed</span></div>
+      <div class="stat"><span class="stat-value" id="stat-categories">—</span><span class="stat-label">categories</span></div>
+      <div class="stat"><span class="stat-value" id="stat-instock">—</span><span class="stat-label">priced &amp; ready</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <nav class="category-tabs" id="category-tabs" aria-label="Filter by category"></nav>
+  <div class="search-row">
+    <input type="search" id="search-input" placeholder="Search by name or SKU…" aria-label="Search items">
+    <select id="sort-select" aria-label="Sort items">
+      <option value="default">Sort: default</option>
+      <option value="name">Name (A–Z)</option>
+      <option value="price-asc">Price (low to high)</option>
+      <option value="price-desc">Price (high to low)</option>
+    </select>
+    <button type="button" id="clear-btn">Clear filters</button>
+  </div>
+</div>
+
+<main>
+  <p class="result-count" id="result-count"></p>
+  <div class="grid" id="grid"></div>
+  <p class="empty-state" id="empty-state" hidden>No items match that search. Try a different term or clear the filter.</p>
+</main>
+
+<footer class="site-footer">
+  <p>Gulf Surplus Board is a listings service — items shown here are advertised on behalf of stockholders. All purchases are arranged directly between buyer and seller; Gulf Surplus Board does not process sales or payments. Prices shown are indicative and exclude delivery.</p>
+  <p class="footer-contact">WhatsApp: <a href="https://wa.me/97332200095">+973 3220 0095</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

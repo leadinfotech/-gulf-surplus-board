@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Items — Gulf Surplus Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: #F1EEE6;
+    color: #16233A;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0 0 0.3rem;
+  }
+  p.sub { color: #5E6E72; margin: 0 0 1.5rem; font-size: 0.92rem; }
+
+  .step {
+    background: #FBFAF6;
+    border: 1px solid #D3CFC2;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .step h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: #2F6FED;
+    margin: 0 0 0.6rem;
+    text-transform: uppercase;
+  }
+
+  input[type="file"] { font-family: 'IBM Plex Sans', sans-serif; }
+
+  #toolbar {
+    display: none;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  #toolbar.visible { display: flex; }
+  #search {
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #D3CFC2;
+    background: #FBFAF6;
+    flex: 1;
+    min-width: 180px;
+  }
+  #summary {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: #5E6E72;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FBFAF6;
+    display: none;
+  }
+  table.visible { display: table; }
+  th, td {
+    border: 1px solid #D3CFC2;
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    font-size: 0.86rem;
+  }
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    background: #16233A;
+    color: #F1EEE6;
+    position: sticky;
+    top: 0;
+  }
+  tr.row-hidden { display: none; }
+  tr.no-price { background: #F3E7E4; }
+
+  td.sku, td.category { font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; color: #5E6E72; }
+
+  input.price-input, input.country-input, input.supplier-input {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.88rem;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #D3CFC2;
+  }
+  input.price-input { width: 80px; text-align: right; }
+  input.country-input { width: 110px; }
+  input.supplier-input { width: 90px; }
+  input.changed { border-color: #2F6FED; background: #EAF1FF; }
+
+  .clear-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    border: 1px solid #D3CFC2;
+    background: #FBFAF6;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+  }
+  .clear-btn:hover { border-color: #953B29; color: #953B29; }
+
+  #download-row {
+    margin-top: 1.4rem;
+    display: none;
+  }
+  #download-row.visible { display: block; }
+
+  button#download-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.92rem;
+    background: #16233A;
+    color: #F1EEE6;
+    border: none;
+    padding: 0.75rem 1.4rem;
+    cursor: pointer;
+  }
+  button#download-btn:hover { background: #0F1A2C; }
+
+  .error {
+    color: #953B29;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>Manage Items</h1>
+<p class="sub">Load your current items.json, bulk-edit price, country of origin, and supplier code, download the updated file, commit once. Stock is unlimited on this site, so there's no quantity to track — leaving Price blank automatically marks an item "Currently unavailable" on the site. Supplier code is an opaque tag only (e.g. "SUP-A") — never put a supplier's actual name here, this field ends up in the public repo. Nothing here uploads anywhere; it all runs in your browser.</p>
+
+<div class="step">
+  <h2>Step 1 — load your current items.json</h2>
+  <input type="file" id="file-input" accept=".json,application/json">
+  <p id="load-error" class="error" style="display:none;"></p>
+</div>
+
+<div id="toolbar">
+  <input type="search" id="search" placeholder="Search by name, SKU, category, or country…">
+  <span id="summary"></span>
+</div>
+
+<table id="items-table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>SKU</th>
+      <th>Category</th>
+      <th>Price (BHD)</th>
+      <th>Country</th>
+      <th>Supplier Code</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="table-body"></tbody>
+</table>
+
+<div id="download-row">
+  <button id="download-btn">Download updated items.json</button>
+</div>
+
+<script>
+let ITEMS = [];
+let originalState = new Map();
+
+const fileInput = document.getElementById('file-input');
+const loadError = document.getElementById('load-error');
+const toolbar = document.getElementById('toolbar');
+const table = document.getElementById('items-table');
+const tbody = document.getElementById('table-body');
+const searchInput = document.getElementById('search');
+const summary = document.getElementById('summary');
+const downloadRow = document.getElementById('download-row');
+const downloadBtn = document.getElementById('download-btn');
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data)) throw new Error('File is not a list of items.');
+      ITEMS = data;
+      originalState = new Map(ITEMS.map((it, i) => [i, { price: it.price, country: it.country || '', supplierCode: it.supplierCode || '' }]));
+      loadError.style.display = 'none';
+      renderTable();
+      toolbar.classList.add('visible');
+      table.classList.add('visible');
+      downloadRow.classList.add('visible');
+    } catch (err) {
+      loadError.textContent = 'Could not read that file — make sure it\'s your items.json. (' + err.message + ')';
+      loadError.style.display = 'block';
+    }
+  };
+  reader.readAsText(file);
+});
+
+function renderTable() {
+  tbody.innerHTML = '';
+  ITEMS.forEach((item, index) => {
+    const tr = document.createElement('tr');
+    tr.dataset.index = index;
+    tr.dataset.search = (item.name + ' ' + item.sku + ' ' + item.category + ' ' + (item.country || '') + ' ' + (item.supplierCode || '')).toLowerCase();
+    if (item.price === null || item.price === undefined) tr.classList.add('no-price');
+
+    tr.innerHTML = `
+      <td>${item.name}</td>
+      <td class="sku">${item.sku}</td>
+      <td class="category">${item.category}</td>
+      <td><input type="number" step="0.001" min="0" class="price-input" data-index="${index}" value="${item.price !== null && item.price !== undefined ? item.price : ''}" placeholder="—"></td>
+      <td><input type="text" class="country-input" data-index="${index}" value="${item.country || ''}" placeholder="—"></td>
+      <td><input type="text" class="supplier-input" data-index="${index}" value="${item.supplierCode || ''}" placeholder="—"></td>
+      <td><button class="clear-btn" data-index="${index}">Clear price</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+  attachRowEvents();
+  updateSummary();
+}
+
+function attachRowEvents() {
+  document.querySelectorAll('.price-input').forEach(input => {
+    input.addEventListener('input', () => {
+      const idx = parseInt(input.dataset.index, 10);
+      const val = input.value.trim();
+      ITEMS[idx].price = val === '' ? null : parseFloat(val);
+      markRow(idx);
+    });
+  });
+  document.querySelectorAll('.country-input').forEach(input => {
+    input.addEventListener('input', () => {
+      const idx = parseInt(input.dataset.index, 10);
+      const val = input.value.trim();
+      if (val === '') {
+        delete ITEMS[idx].country;
+      } else {
+        ITEMS[idx].country = val;
+      }
+      markRow(idx);
+    });
+  });
+  document.querySelectorAll('.supplier-input').forEach(input => {
+    input.addEventListener('input', () => {
+      const idx = parseInt(input.dataset.index, 10);
+      const val = input.value.trim();
+      if (val === '') {
+        delete ITEMS[idx].supplierCode;
+      } else {
+        ITEMS[idx].supplierCode = val;
+      }
+      markRow(idx);
+    });
+  });
+  document.querySelectorAll('.clear-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.index, 10);
+      ITEMS[idx].price = null;
+      const input = document.querySelector(`.price-input[data-index="${idx}"]`);
+      input.value = '';
+      markRow(idx);
+    });
+  });
+}
+
+function markRow(idx) {
+  const orig = originalState.get(idx);
+  const priceInput = document.querySelector(`.price-input[data-index="${idx}"]`);
+  const countryInput = document.querySelector(`.country-input[data-index="${idx}"]`);
+  const supplierInput = document.querySelector(`.supplier-input[data-index="${idx}"]`);
+  const tr = priceInput.closest('tr');
+
+  const priceChanged = ITEMS[idx].price !== orig.price;
+  const countryChanged = (ITEMS[idx].country || '') !== orig.country;
+  const supplierChanged = (ITEMS[idx].supplierCode || '') !== orig.supplierCode;
+
+  priceInput.classList.toggle('changed', priceChanged);
+  countryInput.classList.toggle('changed', countryChanged);
+  supplierInput.classList.toggle('changed', supplierChanged);
+  tr.classList.toggle('no-price', ITEMS[idx].price === null || ITEMS[idx].price === undefined);
+
+  updateSummary();
+}
+
+function updateSummary() {
+  const total = ITEMS.length;
+  const unavailable = ITEMS.filter(i => i.price === null || i.price === undefined).length;
+  const changed = ITEMS.filter((i, idx) => {
+    const orig = originalState.get(idx);
+    return i.price !== orig.price
+      || (i.country || '') !== orig.country
+      || (i.supplierCode || '') !== orig.supplierCode;
+  }).length;
+  summary.textContent = `${total} items — ${unavailable} unavailable (no price) — ${changed} changed`;
+}
+
+searchInput.addEventListener('input', () => {
+  const term = searchInput.value.trim().toLowerCase();
+  document.querySelectorAll('#table-body tr').forEach(tr => {
+    tr.classList.toggle('row-hidden', term && !tr.dataset.search.includes(term));
+  });
+});
+
+downloadBtn.addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(ITEMS, null, 2) + '\n'], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'items.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
+
+</body>
+</html>
