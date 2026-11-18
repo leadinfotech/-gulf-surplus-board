@@ -818,5 +818,75 @@
     "description": "Gator brand microfiber cleaning cloths, 35x35cm, for glass, surfaces and detailing.",
     "supplierCode": "SUP-03",
     "image": "images/microfiber_gator.jpg"
+  },
+  {
+    "sku": "TI-01",
+    "name": "Maxi Roll 1/2 Ply",
+    "category": "Tissue & Paper Products",
+    "price": 1.8,
+    "unit": "roll",
+    "description": "Plain or embossed maxi roll, 1/2 ply, 250-1500 grams. For washrooms, kitchens and industrial wiping.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_maxi_roll.jpg"
+  },
+  {
+    "sku": "TI-02",
+    "name": "Toilet Roll",
+    "category": "Tissue & Paper Products",
+    "price": 0.15,
+    "unit": "roll",
+    "description": "Plain or embossed toilet roll, 100-500 sheets.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_toilet_roll.jpg"
+  },
+  {
+    "sku": "TI-03",
+    "name": "Interfold 1/2 Ply",
+    "category": "Tissue & Paper Products",
+    "price": 0.9,
+    "unit": "pack",
+    "description": "Embossed interfold hand towel, 1/2 ply, 150 sheets per pack. For washroom dispensers.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_interfold.jpg"
+  },
+  {
+    "sku": "TI-04",
+    "name": "White Cube Tissue Box",
+    "category": "Tissue & Paper Products",
+    "price": 0.5,
+    "unit": "box",
+    "description": "Plain white cube facial tissue box, 80-100 sheets.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_white_cube.jpg"
+  },
+  {
+    "sku": "TI-05",
+    "name": "Paper Napkin (23x23cm)",
+    "category": "Tissue & Paper Products",
+    "price": 0.45,
+    "unit": "pack (100 sheets)",
+    "description": "Embossed paper napkins, 23x23cm, 100 sheets per pack. For dining and catering use.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_paper_napkin.jpg"
+  },
+  {
+    "sku": "TI-06",
+    "name": "White Facial Box (Flat)",
+    "category": "Tissue & Paper Products",
+    "price": 0.5,
+    "unit": "box",
+    "description": "Plain white flat-pack facial tissue box, 80-100 sheets.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_white_facial_box.jpg"
+  },
+  {
+    "sku": "TI-07",
+    "name": "Autocut Roll",
+    "category": "Tissue & Paper Products",
+    "price": 2.5,
+    "unit": "roll",
+    "description": "Plain or embossed autocut roll, 800-1800 grams. For automatic washroom dispensers.",
+    "supplierCode": "SUP-04",
+    "image": "images/tissue_autocut_roll.jpg"
   }
 ]
