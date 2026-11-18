@@ -718,5 +718,105 @@
     "description": "12L (3 gallon) insulated water cooler with easy-flow tap.",
     "supplierCode": "SUP-01",
     "image": "images/water_cooler.jpg"
+  },
+  {
+    "sku": "HS-01",
+    "name": "Swabbs Skin/Surface Alcohol Spray 70%",
+    "category": "Hand Sanitizers & Disinfectants",
+    "price": 1.2,
+    "unit": "bottle",
+    "description": "Ready-to-use 70% isopropyl alcohol spray for skin antisepsis, surface disinfection, and general cleaning. ISO-certified. Available in 250ml and 500ml spray bottles.",
+    "supplierCode": "SUP-02",
+    "image": "images/swabbs_alcohol_spray.jpg"
+  },
+  {
+    "sku": "HS-02",
+    "name": "Swabbs Anti-Bacterial Hand Soap",
+    "category": "Hand Sanitizers & Disinfectants",
+    "price": 1.5,
+    "unit": "bottle",
+    "description": "Viscous anti-bacterial hand soap with Benzalkonium Chloride, hydrating moisturizers and emollients. ISO-certified. Available in 500ml and 1L, bottle or refill pouch.",
+    "supplierCode": "SUP-02",
+    "image": "images/swabbs_hand_soap.jpg"
+  },
+  {
+    "sku": "HS-03",
+    "name": "Swabbs Hand Gel Sanitizer",
+    "category": "Hand Sanitizers & Disinfectants",
+    "price": 1.8,
+    "unit": "bottle",
+    "description": "70% isopropyl alcohol hand gel sanitizer with skin-friendly emollients for strong antimicrobial action. ISO-certified. Available in 500ml and 1L, bottle or refill pouch.",
+    "supplierCode": "SUP-02",
+    "image": "images/swabbs_hand_gel_sanitizer.jpg"
+  },
+  {
+    "sku": "HS-04",
+    "name": "Swabbs Multi-Surface Cleanser",
+    "category": "Hand Sanitizers & Disinfectants",
+    "price": 2.5,
+    "unit": "gallon",
+    "description": "Ready-to-use antimicrobial multi-surface disinfectant and cleaner, broad-spectrum. ISO-certified. Available in 1L spray bottle and 4L gallon.",
+    "supplierCode": "SUP-02",
+    "image": "images/swabbs_multi_surface_cleanser.jpg"
+  },
+  {
+    "sku": "HS-05",
+    "name": "Swabbs Floor Cleaner",
+    "category": "Hand Sanitizers & Disinfectants",
+    "price": 2.2,
+    "unit": "gallon",
+    "description": "Multipurpose broad-spectrum disinfectant floor cleaner, effective against bacteria, viruses and fungi. ISO-certified. 4L gallon.",
+    "supplierCode": "SUP-02",
+    "image": "images/swabbs_floor_cleaner.jpg"
+  },
+  {
+    "sku": "MF-01",
+    "name": "Microfiber Cleaning Cloth - Assorted (10pk)",
+    "category": "Microfiber Cloths",
+    "price": 1.0,
+    "unit": "pack (10pcs)",
+    "description": "Assorted-colour microfiber cleaning cloths, 35x35cm, lint-free and highly absorbent. Suitable for household, automotive and industrial cleaning. 48 packs per carton.",
+    "supplierCode": "SUP-03",
+    "image": "images/microfiber_generic.jpg"
+  },
+  {
+    "sku": "MF-02",
+    "name": "MyChoice Microfiber Cloth (10pk)",
+    "category": "Microfiber Cloths",
+    "price": 0.9,
+    "unit": "pack (10pcs)",
+    "description": "MyChoice brand microfiber cleaning cloths, assorted colours, lint-free and machine washable. 24 packs per carton.",
+    "supplierCode": "SUP-03",
+    "image": "images/microfiber_mychoice.jpg"
+  },
+  {
+    "sku": "MF-03",
+    "name": "DustPro Microfiber Cloth (10pk)",
+    "category": "Microfiber Cloths",
+    "price": 0.95,
+    "unit": "pack (10pcs)",
+    "description": "DustPro brand microfiber cleaning cloths, 35x35cm, thick and soft, scratch-free and highly absorbent. Machine washable.",
+    "supplierCode": "SUP-03",
+    "image": "images/microfiber_dustpro.jpg"
+  },
+  {
+    "sku": "MF-04",
+    "name": "M&H Microfiber Cloth (10pk)",
+    "category": "Microfiber Cloths",
+    "price": 0.9,
+    "unit": "pack (10pcs)",
+    "description": "M&H brand \"A\" grade microfiber cleaning cloths, 35x35cm. Ideal for dashboards, leather seats, glass and other interior surfaces.",
+    "supplierCode": "SUP-03",
+    "image": "images/microfiber_mh.jpg"
+  },
+  {
+    "sku": "MF-05",
+    "name": "Gator Microfiber Cloth (10pk)",
+    "category": "Microfiber Cloths",
+    "price": 1.0,
+    "unit": "pack (10pcs)",
+    "description": "Gator brand microfiber cleaning cloths, 35x35cm, for glass, surfaces and detailing.",
+    "supplierCode": "SUP-03",
+    "image": "images/microfiber_gator.jpg"
   }
 ]

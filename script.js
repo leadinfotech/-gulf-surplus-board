@@ -10,6 +10,8 @@ const CATEGORY_COLORS = {
   "Cleaning / Utility": "#2E7D6B",
   "Fiber / Cloth": "#6B5B95",
   "Site Equipment": "#2F6178",
+  "Hand Sanitizers & Disinfectants": "#1F7A8C",
+  "Microfiber Cloths": "#A8763E",
   "default": "#3D5A5B"
 };
 
