@@ -98,7 +98,7 @@ function initials(category) {
 
 function mediaHtml(item, color) {
   if (item.image) {
-    const fallback = `this.outerHTML='<div class=\"card-media-fallback\" style=\"background:${color}\">${initials(item.category)}</div>'`;
+    const fallback = `this.outerHTML='<div class=&quot;card-media-fallback&quot; style=&quot;background:${color}&quot;>${initials(item.category)}</div>'`;
     return `<div class="card-media"><img src="${item.image}" alt="${item.name}" loading="lazy" onerror="${fallback}"></div>`;
   }
   return `<div class="card-media card-media-fallback" style="background:${color}">${initials(item.category)}</div>`;
