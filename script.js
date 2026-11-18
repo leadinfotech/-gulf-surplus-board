@@ -12,6 +12,7 @@ const CATEGORY_COLORS = {
   "Site Equipment": "#2F6178",
   "Hand Sanitizers & Disinfectants": "#1F7A8C",
   "Microfiber Cloths": "#A8763E",
+  "Tissue & Paper Products": "#4A6FA5",
   "default": "#3D5A5B"
 };
 
