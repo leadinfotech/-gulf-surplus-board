@@ -24,19 +24,20 @@ let sortMode = "default";
 const WHATSAPP_NUMBER = "97332200095";
 
 function enquireHref(item) {
-  const priceLine = item.price !== null
-    ? `Price: BD ${Number(item.price).toFixed(3)} per ${item.unit}\n`
-    : ``;
-  const codeLine = item.supplierCode
-    ? `Ref: ${item.supplierCode}\n`
-    : ``;
-  const message =
-    `Hi, I'm interested in this listing:\n\n` +
-    `${item.name} (${item.sku})\n` +
-    `Category: ${item.category}\n` +
-    priceLine +
-    codeLine +
-    `\nCould you share more details?`;
+  const available = item.available !== false;
+  const message = available
+    ? `Hello,\n\n` +
+      `I'd like a quote for:\n` +
+      `• Item: ${item.name}\n` +
+      `• Ref: ${item.sku}\n` +
+      `• Category: ${item.category}\n` +
+      `• Sold per: ${item.unit}\n\n` +
+      `Please send the price and delivery time. Thank you.`
+    : `Hello,\n\n` +
+      `I'm interested in:\n` +
+      `• Item: ${item.name}\n` +
+      `• Ref: ${item.sku}\n\n` +
+      `It shows as currently unavailable. When will it be back in stock, or do you have a similar item?`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
@@ -79,11 +80,11 @@ function updateStats() {
   document.getElementById("stat-categories").textContent =
     new Set(ITEMS.map(i => i.category)).size;
   document.getElementById("stat-instock").textContent =
-    ITEMS.filter(i => i.price !== null).length;
+    ITEMS.filter(i => i.available !== false).length;
 }
 
-function availabilityBadge(price) {
-  if (price === null) return { label: "Currently unavailable", cls: "badge-out" };
+function availabilityBadge(available) {
+  if (!available) return { label: "Currently unavailable", cls: "badge-out" };
   return { label: "Available", cls: "badge-in" };
 }
 
@@ -123,10 +124,6 @@ function render() {
 
   if (sortMode === "name") {
     filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortMode === "price-asc") {
-    filtered = [...filtered].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-  } else if (sortMode === "price-desc") {
-    filtered = [...filtered].sort((a, b) => (b.price ?? -Infinity) - (a.price ?? -Infinity));
   }
 
   resultCount.textContent = `${filtered.length} item${filtered.length === 1 ? "" : "s"}`;
@@ -140,10 +137,9 @@ function render() {
 
   filtered.forEach(item => {
     const color = CATEGORY_COLORS[item.category] || CATEGORY_COLORS.default;
-    const badge = availabilityBadge(item.price);
-    const priceText = item.price !== null
-      ? `BD ${Number(item.price).toFixed(3)}`
-      : `Price on request`;
+    const available = item.available !== false;
+    const badge = availabilityBadge(available);
+    const ctaText = available ? "Get a quote on WhatsApp" : "Ask about availability";
     const originLine = item.country
       ? `<span class="origin-note">Made in ${item.country}</span>`
       : `<span class="origin-note"></span>`;
@@ -160,14 +156,13 @@ function render() {
         <h2 class="card-name">${item.name}</h2>
         <p class="card-desc">${item.description || ""}</p>
         <div class="card-meta">
-          <span class="card-price">${priceText}</span>
-          <span class="card-unit">per ${item.unit}</span>
+          <span class="card-unit">Sold per ${item.unit}</span>
         </div>
         <div class="card-footer-row">
           ${originLine}
           <span class="badge ${badge.cls}">${badge.label}</span>
         </div>
-        <a class="enquire-btn" href="${enquireHref(item)}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+        <a class="enquire-btn" href="${enquireHref(item)}" target="_blank" rel="noopener">${ctaText}</a>
       </div>
     `;
     grid.appendChild(card);

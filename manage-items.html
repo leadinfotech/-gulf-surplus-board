@@ -136,7 +136,7 @@
 <body>
 
 <h1>Manage Items</h1>
-<p class="sub">Load your current items.json, bulk-edit price, country of origin, and supplier code, download the updated file, commit once. Stock is unlimited on this site, so there's no quantity to track — leaving Price blank automatically marks an item "Currently unavailable" on the site. Supplier code is an opaque tag only (e.g. "SUP-A") — never put a supplier's actual name here, this field ends up in the public repo. Nothing here uploads anywhere; it all runs in your browser.</p>
+<p class="sub">Load your current items.json, bulk-edit availability, country of origin, and supplier code, download the updated file, commit once. Stock is unlimited on this site, so there's no quantity to track — untick Available to mark an item "Currently unavailable" on the site. Prices are not stored on the site — they are quoted on WhatsApp. Supplier code is an opaque tag only (e.g. "SUP-A") — never put a supplier's actual name here, this field ends up in the public repo. Nothing here uploads anywhere; it all runs in your browser.</p>
 
 <div class="step">
   <h2>Step 1 — load your current items.json</h2>
@@ -155,7 +155,7 @@
       <th>Item</th>
       <th>SKU</th>
       <th>Category</th>
-      <th>Price (BHD)</th>
+      <th>Available</th>
       <th>Country</th>
       <th>Supplier Code</th>
       <th></th>
@@ -191,7 +191,7 @@ fileInput.addEventListener('change', (e) => {
       const data = JSON.parse(ev.target.result);
       if (!Array.isArray(data)) throw new Error('File is not a list of items.');
       ITEMS = data;
-      originalState = new Map(ITEMS.map((it, i) => [i, { price: it.price, country: it.country || '', supplierCode: it.supplierCode || '' }]));
+      originalState = new Map(ITEMS.map((it, i) => [i, { available: it.available !== false, country: it.country || '', supplierCode: it.supplierCode || '' }]));
       loadError.style.display = 'none';
       renderTable();
       toolbar.classList.add('visible');
@@ -211,16 +211,16 @@ function renderTable() {
     const tr = document.createElement('tr');
     tr.dataset.index = index;
     tr.dataset.search = (item.name + ' ' + item.sku + ' ' + item.category + ' ' + (item.country || '') + ' ' + (item.supplierCode || '')).toLowerCase();
-    if (item.price === null || item.price === undefined) tr.classList.add('no-price');
+    if (item.available === false) tr.classList.add('no-price');
 
     tr.innerHTML = `
       <td>${item.name}</td>
       <td class="sku">${item.sku}</td>
       <td class="category">${item.category}</td>
-      <td><input type="number" step="0.001" min="0" class="price-input" data-index="${index}" value="${item.price !== null && item.price !== undefined ? item.price : ''}" placeholder="—"></td>
+      <td><input type="checkbox" class="price-input" data-index="${index}" ${item.available !== false ? 'checked' : ''}></td>
       <td><input type="text" class="country-input" data-index="${index}" value="${item.country || ''}" placeholder="—"></td>
       <td><input type="text" class="supplier-input" data-index="${index}" value="${item.supplierCode || ''}" placeholder="—"></td>
-      <td><button class="clear-btn" data-index="${index}">Clear price</button></td>
+      <td><button class="clear-btn" data-index="${index}">Mark unavailable</button></td>
     `;
     tbody.appendChild(tr);
   });
@@ -230,10 +230,9 @@ function renderTable() {
 
 function attachRowEvents() {
   document.querySelectorAll('.price-input').forEach(input => {
-    input.addEventListener('input', () => {
+    input.addEventListener('change', () => {
       const idx = parseInt(input.dataset.index, 10);
-      const val = input.value.trim();
-      ITEMS[idx].price = val === '' ? null : parseFloat(val);
+      ITEMS[idx].available = input.checked;
       markRow(idx);
     });
   });
@@ -264,9 +263,9 @@ function attachRowEvents() {
   document.querySelectorAll('.clear-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.dataset.index, 10);
-      ITEMS[idx].price = null;
+      ITEMS[idx].available = false;
       const input = document.querySelector(`.price-input[data-index="${idx}"]`);
-      input.value = '';
+      input.checked = false;
       markRow(idx);
     });
   });
@@ -279,28 +278,28 @@ function markRow(idx) {
   const supplierInput = document.querySelector(`.supplier-input[data-index="${idx}"]`);
   const tr = priceInput.closest('tr');
 
-  const priceChanged = ITEMS[idx].price !== orig.price;
+  const priceChanged = ITEMS[idx].available !== orig.available;
   const countryChanged = (ITEMS[idx].country || '') !== orig.country;
   const supplierChanged = (ITEMS[idx].supplierCode || '') !== orig.supplierCode;
 
   priceInput.classList.toggle('changed', priceChanged);
   countryInput.classList.toggle('changed', countryChanged);
   supplierInput.classList.toggle('changed', supplierChanged);
-  tr.classList.toggle('no-price', ITEMS[idx].price === null || ITEMS[idx].price === undefined);
+  tr.classList.toggle('no-price', ITEMS[idx].available === false);
 
   updateSummary();
 }
 
 function updateSummary() {
   const total = ITEMS.length;
-  const unavailable = ITEMS.filter(i => i.price === null || i.price === undefined).length;
+  const unavailable = ITEMS.filter(i => i.available === false).length;
   const changed = ITEMS.filter((i, idx) => {
     const orig = originalState.get(idx);
-    return i.price !== orig.price
+    return i.available !== orig.available
       || (i.country || '') !== orig.country
       || (i.supplierCode || '') !== orig.supplierCode;
   }).length;
-  summary.textContent = `${total} items — ${unavailable} unavailable (no price) — ${changed} changed`;
+  summary.textContent = `${total} items — ${unavailable} unavailable — ${changed} changed`;
 }
 
 searchInput.addEventListener('input', () => {
